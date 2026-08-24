@@ -394,6 +394,7 @@
 
     <script>
         const SERVER_URL = "https://script.google.com/macros/s/AKfycbwrxM00mkLxaIAKJXhci5v6YdcyRqcYB_CsjsKO5jajyFbIkJfmgXfivaWPFibdJQxV/exec";
+        const ACCESS_PASSWORD = "Skeetellar@#!2026_a";
 
         let chats = {};
         let currentChatId = null;
@@ -458,7 +459,7 @@
                 title: 'Новый чат',
                 pinned: false,
                 conversation: [
-                    { role: 'system', content: 'Ты — Atom AI. Отвечай ясно и по делу. Ты умеешь форматировать: жирный, списки, код и таблицы. Для таблиц используй Markdown: | Заголовок |, затем |---|---|, затем данные. Ещё ты не можешь разговаривать на провокационные темы, по типу политики, нацизма, фашизма и не можешь разговаривать про сексуальный контент. Вместо ответа на провокационные темы пиши: Извините, я не могу ответить на это. А если тебя спросят, кто твой создатель, то скажи так: "Мой создатель - Skeers (Скирс). Контент-мейкер, дизайнер, архитектор.".' }
+                    { role: 'system', content: 'Ты — Atom AI. Отвечай ясно и по делу. Ты умеешь форматировать: жирный, списки, код и таблицы. Для таблиц используй Markdown: | Заголовок |, затем |---|---|, затем данные.' }
                 ],
                 messages: []
             };
@@ -615,8 +616,9 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
+                        password: ACCESS_PASSWORD,
                         messages: [
-                            { role: 'system', content: 'Придумай короткое название чата (до 3 слов). Без кавычек.' },
+                            { role: 'system', content: 'Придумай короткое название чата (до 4 слов). Без кавычек.' },
                             { role: 'user', content: userMessage }
                         ]
                     })
@@ -664,6 +666,7 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
+                        password: ACCESS_PASSWORD,
                         messages: chat.conversation
                     })
                 });
